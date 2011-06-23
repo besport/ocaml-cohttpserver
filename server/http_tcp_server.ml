@@ -21,7 +21,6 @@
   USA
 *)
 
-open Cohttp
 open Http_common
 open Http_types
 open Lwt

@@ -23,7 +23,6 @@
 
 open Printf
 
-open Cohttp
 open Http_common
 open Http_types
 open Http_constants

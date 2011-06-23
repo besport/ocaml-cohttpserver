@@ -1,5 +1,3 @@
-open Cohttp
-
 type conn_id
 val string_of_conn_id : conn_id -> string
 
@@ -17,38 +15,38 @@ type daemon_spec = {
 val respond :
   ?body:string ->
   ?headers:(string * string) list ->
-  ?version:Cohttp.Http_types.version ->
-  ?status:Cohttp.Http_types.status_code -> unit -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version ->
+  ?status:Http_types.status_code -> unit -> string Lwt_stream.t Lwt.t
 val respond_control :
   string ->
   ?is_valid_status:(int -> bool) ->
   ?headers:(string * string) list ->
   ?body:string ->
-  ?version:Cohttp.Http_types.version ->
-  Cohttp.Http_types.status_code -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version ->
+  Http_types.status_code -> string Lwt_stream.t Lwt.t
 val respond_redirect :
   location:string ->
   ?body:string ->
-  ?version:Cohttp.Http_types.version ->
-  ?status:Cohttp.Http_types.status_code -> unit -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version ->
+  ?status:Http_types.status_code -> unit -> string Lwt_stream.t Lwt.t
 val respond_error :
   ?body:string ->
-  ?version:Cohttp.Http_types.version ->
-  ?status:Cohttp.Http_types.status_code -> unit -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version ->
+  ?status:Http_types.status_code -> unit -> string Lwt_stream.t Lwt.t
 val respond_not_found :
   url:'a ->
-  ?version:Cohttp.Http_types.version -> unit -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version -> unit -> string Lwt_stream.t Lwt.t
 val respond_forbidden :
   url:'a ->
-  ?version:Cohttp.Http_types.version -> unit -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version -> unit -> string Lwt_stream.t Lwt.t
 val respond_unauthorized :
   ?version:'a -> ?realm:string -> unit -> string Lwt_stream.t Lwt.t
 val respond_file :
   fname:Lwt_io.file_name ->
   ?droot:string ->
-  ?version:Cohttp.Http_types.version -> ?mime_type: string -> unit -> string Lwt_stream.t Lwt.t
+  ?version:Http_types.version -> ?mime_type: string -> unit -> string Lwt_stream.t Lwt.t
 val respond_with :
-  Cohttp.Http_response.response -> string Lwt_stream.t Lwt.t
+  Http_response.response -> string Lwt_stream.t Lwt.t
 val daemon_callback :
   daemon_spec ->
   clisockaddr:Unix.sockaddr -> srvsockaddr:Unix.sockaddr -> Lwt_io.input_channel -> Lwt_io.output_channel -> unit Lwt.t
@@ -57,9 +55,9 @@ module Trivial :
   sig
     val heading_slash_RE : Pcre.regexp
     val trivial_callback :
-      conn_id -> Cohttp.Http_request.request -> string Lwt_stream.t Lwt.t
+      conn_id -> Http_request.request -> string Lwt_stream.t Lwt.t
     val callback :
-      conn_id -> Cohttp.Http_request.request -> string Lwt_stream.t Lwt.t
+      conn_id -> Http_request.request -> string Lwt_stream.t Lwt.t
     val main : daemon_spec -> 'a Lwt.t
   end
 val default_spec : daemon_spec

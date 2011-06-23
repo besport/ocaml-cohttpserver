@@ -1,0 +1,11 @@
+# OASIS_START
+# DO NOT EDIT (digest: 4ecb670671a4bc7c7d840a235392d9c1)
+# Library cohttpserver
+"server": include
+<server/*.ml{,i}>: pkg_netstring
+<server/*.ml{,i}>: pkg_lwt.unix
+<server/*.ml{,i}>: pkg_lwt.syntax
+<server/*.ml{,i}>: pkg_lwt
+<server/*.ml{,i}>: pkg_cohttp
+# OASIS_STOP
+<server/*.ml{,i}>: syntax_camlp4o
