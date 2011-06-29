@@ -10,6 +10,6 @@ Synopsis: light http library
 
 Library cohttpserver
   Path: server
-  Modules: Http_daemon
+  Modules: Http_tcp_server, Http_daemon
   Install$: true
   BuildDepends: lwt, lwt.unix, lwt.syntax, netstring, cohttp
