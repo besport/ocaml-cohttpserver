@@ -7,11 +7,7 @@ _build
 *bug*
 *conf
 *keys*
-setup*
-configure
-myocamlbuild*
-*.mllib
-*.clib
-META
+setup.data
+setup.log
 shm*
 *.scrum
