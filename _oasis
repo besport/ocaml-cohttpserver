@@ -13,3 +13,13 @@ Library cohttpserver
   Modules: Http_tcp_server, Http_daemon
   Install$: true
   BuildDepends: lwt, lwt.unix, lwt.syntax, netstring, cohttp
+
+Document "cohttpserver-api"
+  Title: API reference for openstreetmap_filters
+  Type: ocamlbuild (0.2)
+  Install: true
+  InstallDir: $htmldir
+  BuildTools: ocamldoc
+  XOCamlbuildPath: ./
+  XOCamlbuildLibraries:
+    cohttpserver
